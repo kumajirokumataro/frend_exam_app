@@ -10,7 +10,9 @@ class PostsController < ApplicationController
 
   def create
     Post.create(post_params)
-    redirect_to new_post_path
+    redirect_to new_post_path, notice: "投稿を作成しました！"
+  else
+    render :new
   end
 
   def show
