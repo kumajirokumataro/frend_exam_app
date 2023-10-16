@@ -3,7 +3,12 @@
 <%= form_with(model: @post, local: true) do |form| %>
   <%= form.hidden_field :content %>
   <p>本文:<%= @post.content %></p>
+  <%= image_tag(@post.image.url) if @post.image && @post.image.url %>
+  <%= form.hidden_field :image_cache %>
   <%= form.submit  "登録する" %>
 
-  <%= form.submit "戻る", name: 'back' %>
+  <%= form_with(model:@post, local:true, method:"get") do |form| %>
+    <%= form.hidden_field :image_cache %>
+    <%= form.submit "戻る", name: 'back' %>
+  <% end %>
 <% end %>
