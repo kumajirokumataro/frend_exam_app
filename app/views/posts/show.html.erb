@@ -1,4 +1,4 @@
 <h1>詳細画面</h1>
 <p>内容: <%= @post.content %></p>
-<p>Image: <%= image_tag @post.image.url %></p>
+<p>Image: <%= image_tag @post.image.url if @post.image && @post.image.url%></p>
 <%= link_to "一覧画面にもどる", posts_path %>
